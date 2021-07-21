@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package blog;
+
+option java_package = "com.test.blog.protofiles";
+option java_multiple_files = true;
+
+message Blog{
+	string id = 1;
+	string authorId = 2;
+	string title = 3;
+	string content = 4;
+}
+
+message CreateBlogRequest{
+	Blog blog = 1;//the id no importa
+}
+
+message CreateBlogResponse{
+	Blog blog = 1;// el id lo regresara mongo
+}
+
+service BlogService{
+	rpc CreateBlog(CreateBlogRequest) returns (CreateBlogResponse){};
+}
